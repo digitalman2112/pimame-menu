@@ -26,11 +26,11 @@ class PMMenuItem(pygame.sprite.Sprite):
 		self.full_path = item_opts['full_path']
 		
 		try:
-			if item_opts ['scraper'] != '':
-				self.cache_name = item_opts['scraper']
+			self.cache_name = item_opts['scraper']
+
 		except KeyError:
-			self.cache_name = item_opts['label']
-			
+			self.cache_name = item_opts['label'].lower()
+
 
 		self.cache = "/home/pi/pimame/pimame-menu/.cache/" + self.cache_name + ".cache"
 		if item_opts['icon_selected']: 
