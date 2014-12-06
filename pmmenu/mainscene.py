@@ -130,7 +130,6 @@ class MainScene(object):
 		
 		num_rows = avail_height / item_height
 
-		print "num_rows = ", num_rows 
 		return num_rows * self.cfg.options.num_items_per_row
 
 	def draw_items(self):
