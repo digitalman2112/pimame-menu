@@ -123,8 +123,14 @@ class MainScene(object):
 		padding = self.cfg.options.padding
 		avail_height = pygame.display.Info().current_h - self.cfg.options.header_height - padding * 2
 		item_height = self.cfg.options.item_height + padding
+
+		#trap the case where item_height in theme.yaml is larger than the available space 		
+		if item_height > avail_height:
+			item_height = avail_height
+		
 		num_rows = avail_height / item_height
 
+		print "num_rows = ", num_rows 
 		return num_rows * self.cfg.options.num_items_per_row
 
 	def draw_items(self):
