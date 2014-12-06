@@ -276,7 +276,10 @@ class PMOptions:
 				except:
 					print 'cant load image: ', alternate_image
 					return self.blank_image
-			print 'cant load image: ', file_path
+			
+			#supress errors where there was no image specified
+			if file_path == "":
+				print 'cant load image: ', file_path
 			return self.blank_image
 			
 	def load_audio(self, file_path):
