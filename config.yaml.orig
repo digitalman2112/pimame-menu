@@ -10,7 +10,7 @@ options:
   show_cursor: No
   allow_quit_to_console: True
   use_scene_transitions: Yes
-  theme_pack: "ian1"
+  theme_pack: "default"
   default_music_volume: 0.2
 
 scraper_options:
@@ -19,36 +19,22 @@ scraper_options:
 
 menu_items:
   - label: SNES
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/snes/
     full_path: yes
     extension: yes
     override_menu: no
     command: /home/pi/pimame/emulators/pisnes/snes9x
 
-  - label: MAME - Cocktail
+  - label: MAME4All
     visible: Yes
-    roms: /home/pi/pimame/roms/mame4all-cocktail/
-    full_path: no
-    override_menu: no
-    command: bash /home/pi/mame4all-cocktail.sh 
-
-  - label: MAME - Upright
-    visible: Yes
-    roms: /home/pi/pimame/roms/mame4all-upright/
-    full_path: no
-    override_menu: no
-    command: bash /home/pi/mame4all-upright.sh
-
-  - label: MAME - Xtra
-    visible: No
     roms: /home/pi/pimame/roms/mame4all/
     full_path: no
     override_menu: no
-    command: /home/pi/pimame/emulators/mame4all-pi/mame    
+    command: /home/pi/pimame/emulators/mame4all-pi/mame 
 
   - label: Neo Geo
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/neogeo/
     full_path: yes
     extension: yes
@@ -61,7 +47,7 @@ menu_items:
     command: advmame 
 
   - label: Final Burn
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/pifba/
     full_path: yes
     extension: yes
@@ -69,21 +55,21 @@ menu_items:
     command: /home/pi/pimame/emulators/fba/fba2x --config=/home/pi/pimame/arcade.cfg  
 
   - label: Genesis
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/genesis/
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/dgen-sdl-1.32/dgen
 
   - label: NES
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/nes/
     full_path: yes
     extension: yes
     command: /home/pi/pimame/emulators/fceux/fceux
 
   - label: Atari 2600
-    visible: No
+    visible: Yes
     full_path: no
     command: stella
     roms: /home/pi/pimame/roms/2600/
@@ -91,7 +77,7 @@ menu_items:
     type: FRONTEND
 
   - label: Playstation 1
-    visible: No
+    visible: Yes
     full_path: no
     command: cd /home/pi/pimame/emulators/pcsx_rearmed && ./pcsx
     override_menu: yes
@@ -99,7 +85,7 @@ menu_items:
     type: FRONTEND
 
   - label: Commodore 64
-    visible: no
+    visible: Yes
     roms: /home/pi/pimame/roms/c64/
     full_path: no
     override_menu: yes
@@ -107,7 +93,7 @@ menu_items:
     type: FRONTEND
 
   - label: ScummVM
-    visible: No
+    visible: Yes
     full_path: no
     command: scummvm
     override_menu: yes
@@ -115,14 +101,14 @@ menu_items:
     type: FRONTEND
 
   - label: Gameboy
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/gb/
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/mednafen/src/mednafen
 
   - label: Gameboy Advance
-    visible: No
+    visible: yes
     full_path: yes
     extension: yes
     command: /home/pi/pimame/emulators/gpsp/gpsp
@@ -130,35 +116,35 @@ menu_items:
     roms: /home/pi/pimame/roms/gba/
 
   - label: TurboGrafx 16
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/tg16
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/mednafen/src/mednafen -force_module pce_fast
 
   - label: Neo Geo Pocket Color
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/ngpc
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/mednafen/src/mednafen 
 
   - label: Sega Master System
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/sms
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/mednafen/src/mednafen 
 
   - label: Game Gear
-    visible: No
+    visible: Yes
     roms: /home/pi/pimame/roms/gg
     full_path: yes
     extension: yes
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && /home/pi/pimame/emulators/mednafen/src/mednafen 
 
   - label: ZX Spectrum
-    visible: No
+    visible: Yes
     full_path: no
     roms: /home/pi/pimame/roms/zxspectrum
     override_menu: Yes
@@ -166,14 +152,14 @@ menu_items:
     type: FRONTEND
 
   - label: Cave Story
-    visible: No
+    visible: Yes
     full_path: no
     command: export LD_LIBRARY_PATH=/home/pi/pimame/dispmanx/build/.libs/ && cd /home/pi/pimame/emulators/cavestory_rpi-master && /home/pi/pimame/emulators/cavestory_rpi-master/nx && cd /home/pi/pimame/pimame-menu
     override_menu: yes
     type: GAME
 
   - label: Restart
-    visible: no
+    visible: Yes
     full_path: no
     command: sudo reboot
     override_menu: yes
@@ -187,49 +173,49 @@ menu_items:
     type: UTILITY
 
   - label: Update PiPlay
-    visible: No
+    visible: Yes
     full_path: no
     command: wget -O - http://pimame.org/update.sh | bash
     override_menu: yes
     type: UTILITY
 
   - label: Rom Scraper
-    visible: No
+    visible: Yes
     full_path: no
     command: python /home/pi/pimame/pimame-menu/scraper/scrape_script.py
     override_menu: yes
     type: UTILITY
 
   - label: Install MAME
-    visible: Yes
+    visible: No
     full_path: no
     command: python /home/pi/pimame/mame_install.py
     override_menu: yes
     type: UTILITY
 
   - label: Toggle Xbox Controller
-    visible: No
+    visible: Yes
     full_path: no
     command: sh /home/pi/pimame/toggle_xbox_controller.sh
     override_menu: yes
     type: UTILITY
 
   - label: raspi-config
-    visible: No
+    visible: Yes
     full_path: no
     command: sudo raspi-config
     override_menu: yes
     type: UTILITY
 
   - label: Wifi Config
-    visible: No
+    visible: Yes
     full_path: no
     command: /home/pi/pimame/wifi-setup/setup.sh
     override_menu: yes
     type: UTILITY
 
   - label: Exit
-    visible: no
+    visible: Yes
     full_path: no
     command: exit_piplay
     override_menu: yes

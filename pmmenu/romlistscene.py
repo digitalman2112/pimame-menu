@@ -44,7 +44,11 @@ class RomListScene(object):
 		self.list_rect = pygame.Rect(0,0, self.list.rom_template.rect.w, self.avail_height - (self.cfg.options.rom_list_padding *2))
 		self.crop_rect = pygame.Rect(0,0, self.list.rom_template.rect.w - cropping['left'] - cropping['right'], self.list.rom_template.rect.h - cropping['bottom'])
 		self.info_container = pygame.Rect(0, 0, max(self.avail_width - self.list_container.w, 0), self.avail_height)
-		self.boxart_area = pygame.Rect(0, 0, self.info_container.w, int(self.info_container.h * .4))
+		
+		#self.boxart_area = pygame.Rect(0, 0, self.info_container.w, int(self.info_container.h * .4))
+		#ian - make the box art fill the vertical area; use config param to set max height %
+		self.boxart_area = pygame.Rect(0, 0, self.info_container.w, self.avail_height)
+		
 		self.description_area = pygame.Rect(0, self.boxart_area.h, self.info_container.w, self.info_container.h - self.boxart_area.h)
 		
 			
@@ -265,12 +269,17 @@ class RomListScene(object):
 			time.sleep(.01)
 			if thread.get_ident() != self.boxart_thread: thread.exit()
 			
-		
+		#print "self.boxart_area.h = ", self.boxart_area.h		
+
 		boxart = self.cfg.options.load_image(self.selected_item.boxart, self.cfg.options.missing_boxart_image)
 		boxart_rect = boxart.get_rect()
-		
+		#print "boxart_rect = ", boxart_rect
+
 		scale = min(float((self.boxart_area.w * self.cfg.options.boxart_max_width) / boxart_rect.w), float((self.boxart_area.h * self.cfg.options.boxart_max_height) / boxart_rect.h))
+		#print "scale = ", scale
+
 		self.boxart_scale_size = (int(boxart_rect.w * scale), int(boxart_rect.h * scale))
+		#print "self.boxart_scale_size = ", self.boxart_scale_size
 		
 		
 		if thread.get_ident() != self.boxart_thread or boxart_rect.w == 1: thread.exit()
