@@ -287,13 +287,16 @@ class MainScene(object):
 			if action == 'LEFT':
                                 if self.selected_index == 0: 
                                         sprite = self.get_selected_item()
-                                        self.do_menu_item_action(sprite)
+					if sprite.type == PMMenuItem.NAVIGATION:
+	                                        self.do_menu_item_action(sprite)
                                 else:
 					self.set_selected_index(self.selected_index - 1)
+
 			elif action == 'RIGHT':
 				if self.selected_index == self.grid.num_items_per_page - 1:    #zero based
 					sprite = self.get_selected_item()
-					self.do_menu_item_action(sprite)
+					if sprite.type == PMMenuItem.NAVIGATION:
+						self.do_menu_item_action(sprite)
 				else:
 					self.set_selected_index(self.selected_index + 1)
 			elif action == 'UP':
