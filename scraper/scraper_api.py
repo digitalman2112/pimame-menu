@@ -110,10 +110,15 @@ class Gamesdb_API(object):
 			if 'roms' in data_block:
 				if 'images' in data_block: image_path = data_block['images']
 				else: image_path = join(data_block['roms'] ,"images/")
+
+				if 'scraper' in data_block: scraper_platform = data_block['scraper']
+				else: scraper_platform = data_block['label']
+
 				if search_platform == 'all':
-					append({'rom_path': data_block['roms'], 'image_path': image_path, 'platform':data_block['label']})
+					append({'rom_path': data_block['roms'], 'image_path': image_path, 'platform':scraper_platform})
 				elif search_platform.lower() == data_block['label'].lower():
-					append({'rom_path': data_block['roms'], 'image_path': image_path, 'platform':data_block['label']})
+					append({'rom_path': data_block['roms'], 'image_path': image_path, 'platform':scraper_platform})
+
 		return rom_locations
 		
 	#Return only files in directory, need to add whitelist of potential rom extensions (.nes, .bin, .zip)	
