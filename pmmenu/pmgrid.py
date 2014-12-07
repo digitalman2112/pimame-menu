@@ -28,13 +28,18 @@ class PMGrid(pygame.sprite.OrderedUpdates):
 				self.menu_items.append(pm_menu_item)
 
 		if self.options.sort_items_with_roms_first:
-			self.menu_items.sort(key=lambda x: int(x.num_roms.replace("!","")),reverse=True) #sort fix 	
+			#self.menu_items.sort(key=lambda x: int(x.num_roms.replace("!","")),reverse=True) #sort fix 	
+			self.menu_items.sort(key=self.roms_sort, reverse=True)	
 		
 		#pull all utilities to end of list
 		self.menu_items.sort(key=self.utility_sort)
 	
 		if self.options.hide_system_tools:
 			self.menu_items = [x for x in self.menu_items if x.type != "UTILITY"]
+
+ 	def roms_sort (self, custom):
+		if int(custom.num_roms.replace("!","")) > 0: return 1
+		return 0
 			
 	def utility_sort(self, custom):
 		if custom.type == "UTILITY": return 1
