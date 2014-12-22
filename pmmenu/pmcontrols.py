@@ -16,6 +16,7 @@ class PMControls:
 		
 		pygame.joystick.init()
 		js_count = pygame.joystick.get_count()
+
 		for i in range(js_count):
 			js = pygame.joystick.Joystick(i)
 			js.init()
@@ -116,12 +117,16 @@ class PMControls:
 			
 				#JOYSTICK BUTTONS
 				elif event.type in self.JOY_BUTTON_EVENT:
-					if self.JOY_PAD:
-						joy_buttons = ([0] * 100)
-						for i in xrange(0,self.JOY_PAD.get_numbuttons()):
-							button = self.JOY_PAD.get_button( i )
-							if button: joy_buttons[ i ] = 1
-						action = self.JOYSTICK[str(joy_buttons)]
+					#ic - buttons come in separate events, is this really necessary?
+					#ic - JOY_PAD may be removable if not referenced externally
+                        		js = pygame.joystick.Joystick(event.joy)
+
+					joy_buttons = ([0] * 100)
+					for i in xrange(0,js.get_numbuttons()):
+						button = js.get_button( i )
+						if button: joy_buttons[ i ] = 1
+					action = self.JOYSTICK[str(joy_buttons)]
+						
 				
 				#MOUSE CLICK
 				elif event.type in self.MOUSE_BUTTON_EVENT:
